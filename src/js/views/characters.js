@@ -29,7 +29,7 @@ export const Characters = () => {
                 <div className="col-2">
                     <p> {character.name} </p>
                     <button> <AiOutlineHeart /> </button>
-                    <Link to = {`/characters/${index + 1}`}> 
+                    <Link to = {`/characters/${index + 1 }`}> 
                     <button> Ver más </button>
                     </Link>
                  </div>
