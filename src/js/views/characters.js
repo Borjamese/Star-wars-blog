@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
-import { AiOutlineHeart} from 'react-icons/ai';
+import { AiOutlineHeart } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 
 const urlApiPeople = "https://www.swapi.tech/api/people";
-const imgUrl = "https://starwars-visualguide.com/assets/img/characters/";
+const imgUrlChars = "https://starwars-visualguide.com/assets/img/characters/";
 
 export const Characters = () => {
     const { store, actions } = useContext(Context);
     const [cardCharacter, setCardCharacter] = useState([]);
-    
+    const {uid} = useParams()
 
     useEffect(() => {
         fetch(urlApiPeople)
@@ -26,25 +27,29 @@ export const Characters = () => {
 
     return (
         <div className="container">
-            <br />
-            <br />
-                <div className="row justify-content-md-center">
-                 {cardCharacter.map((character, index) => (
-                <div className="col-2">
-                    <p> {character.name} </p>
-                    <button onClick={() => {
-                        actions.selectElement(character)
-                        actions.addFavoritos()
-                    }
-                        
-                     }> <AiOutlineHeart /> </button>
-                    <Link to = {`/characters/${index + 1 }`}> 
-                    <button> Ver más </button>
-                    </Link>
-                 </div>
-                 )
-                 )}
-                </div>
+            <div className="row">
+                {cardCharacter.map((character, index) => (
+                    <div className="col-md-2" key={index}>
+                        <div className="d-flex">
+                            <div className="card">
+                                <img src={`${imgUrlChars}${index + 1}.jpg`} alt="" className="card-img-top char-img" />
+                                <div className="card-body">
+                                    <p className="card-text">{character.name}</p>
+                                </div>
+                            </div>
+                            <button onClick={() => {
+                                    actions.selectElement(character)
+                                    actions.addFavoritos()
+                                }
+                            }> <AiOutlineHeart /> </button>
+                            <Link to={`/characters/${index + 1}`}>
+                                <button> Ver más </button>
+                            </Link>
+                        </div>
+                    </div>
+                ))}
             </div>
+        </div>
     );
 };
+
