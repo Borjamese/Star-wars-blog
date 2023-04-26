@@ -1,43 +1,28 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			favoritos:[], 
+			element:{}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			selectElement: (item) => {
+            setStore({element:item})
+			console.log(getStore().element)
 			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			addFavoritos:() => {
+				const store = getStore()
+				const newFavorito = store.element;
+				setStore({favoritos: [...store.favoritos,newFavorito]})
+				console.log(getStore().favoritos)
 			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			deleteFavoritos: (index) => {
+				const store = getStore()
+				const updateFavoritos = store.favoritos.filter((fav, i) => i != index); 
+				setStore({favoritos: updateFavoritos})
+				console.log(getStore().favoritos)
 			}
+			
 		}
 	};
 };

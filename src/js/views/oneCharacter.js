@@ -10,7 +10,10 @@ export const CharacterOne = () => {
     useEffect(() => {
         fetch(`https://www.swapi.tech/api/people/${uid}`)
         .then(response => response.json())
-        .then(data => setSingleCharacter(data))
+        .then(data =>{ 
+            console.log(data.result.properties)
+            setSingleCharacter(data.result.properties)
+        }) 
         .catch(error => console.log(error))
  }, [])
 
