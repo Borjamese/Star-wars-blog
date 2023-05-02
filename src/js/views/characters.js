@@ -29,13 +29,11 @@ export const Characters = () => {
         <div className="container">
             <div className="row">
                 {cardCharacter.map((character, index) => (
-                    <div className="col-md-2" key={index}>
+                    <div className="col-md-4" key={index}>
                         <div className="d-flex">
                             <div className="card">
                                 <img src={`${imgUrlChars}${index + 1}.jpg`} alt="" className="card-img-top char-img" />
-                                <div className="card-body">
-                                    <p className="card-text">{character.name}</p>
-                                </div>
+            
                             </div>
                             <button onClick={() => {
                                     actions.selectElement(character)

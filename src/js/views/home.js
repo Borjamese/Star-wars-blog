@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
 import { Characters } from "./characters";
 import { Context } from "../store/appContext";
+import { Starships } from "./starships";
 
 
 export const Home = () => {
@@ -10,6 +11,7 @@ export const Home = () => {
 	return (
 		<div>
 			<Characters />
+			<Starships />
 		</div>
 	)
 };
