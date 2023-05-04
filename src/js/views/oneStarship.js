@@ -18,7 +18,7 @@ export const StarshipOne = () => {
  }, [])
 
  
-//HAY UN FALLO EN LA API, LAS IMG DE LAS STARSHIPS ESTAN CRASHEADAS.
+//HAY UN FALLO EN LA API, LAS IMG DE LAS STARSHIPS ESTAN CRASHEADAS Y LA NAVE 1 NO SALE.
 
 	return (
         <>
