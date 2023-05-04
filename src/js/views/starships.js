@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AiOutlineHeart } from 'react-icons/ai';
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ const urlImgStarships= "https://starwars-visualguide.com/assets/img/starships/"
 export function Starships() {
 
     const [starship, setStarship] = useState([]);
+    const { store, actions } = useContext(Context);
 
     useEffect(() => {
         fetch(urlStarships)
@@ -35,7 +36,11 @@ export function Starships() {
                                 <img src={`${urlImgStarships}${index + 9}.jpg`} alt="" />
 
                             </div>
-                            <button> <AiOutlineHeart /> </button>
+                            <button onClick={() => {
+                                    actions.selectElement(starship)
+                                    actions.addFavoritos()
+                            }
+                            }> <AiOutlineHeart /> </button>
                             <Link to={`/starships/${index + 1}`}>
                                 <button> Ver más </button>
                             </Link>
