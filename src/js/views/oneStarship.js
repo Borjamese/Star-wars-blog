@@ -8,7 +8,7 @@ export const StarshipOne = () => {
 
 
     useEffect(() => {
-        fetch(`https://www.swapi.tech/api/starships${uid}`)
+        fetch(`https://www.swapi.tech/api/starships/${uid}`)
         .then(response => response.json())
         .then(data =>{ 
             console.log(data.result.properties)
@@ -17,6 +17,8 @@ export const StarshipOne = () => {
         .catch(error => console.log(error))
  }, [])
 
+ 
+//HAY UN FALLO EN LA API, LAS IMG DE LAS STARSHIPS ESTAN CRASHEADAS.
 
 	return (
         <>
@@ -30,12 +32,12 @@ export const StarshipOne = () => {
            <div className="col-5 mt-5">
             <h1>Name: {singleStarship.name}</h1>
             <hr/>
-            <h5>Mass: {singleStarship.model}</h5>
-            <h5>Hair color: {singleStarship.manufacturer}</h5>
-            <h5>Skin: {singleStarship.passengers}</h5>
-            <h5>Eyes: {singleStarship.consumables}</h5>
-            <h6>Birth year: {singleStarship.starship_class}</h6>
-            <h6>Gender: {singleStarship.crew}</h6>
+            <h5>Model: {singleStarship.model}</h5>
+            <h5>Manufacturer: {singleStarship.manufacturer}</h5>
+            <h5>Passengers: {singleStarship.passengers}</h5>
+            <h5>Consumables: {singleStarship.consumables}</h5>
+            <h6>Starship class: {singleStarship.starship_class}</h6>
+            <h6>Crew: {singleStarship.crew}</h6>
             
            </div>
            

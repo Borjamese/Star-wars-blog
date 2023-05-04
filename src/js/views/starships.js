@@ -13,12 +13,14 @@ export function Starships() {
     const [starship, setStarship] = useState([]);
     const { store, actions } = useContext(Context);
 
+
+
     useEffect(() => {
         fetch(urlStarships)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data.results);
-                setStarship(data.results);
+                setStarship(data.results.slice(7, 12));
             })
             .catch((error) => {
                 console.log(error);
